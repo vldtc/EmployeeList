@@ -28,22 +28,22 @@ class HomeFragment : Fragment() {
 
         val txtViewPeople: TextView = binding.tvPeopleNo
         homeViewModel.peopleData.observe(viewLifecycleOwner) {
-            txtViewPeople.text = "No of people employed\n${it.toString()}"
+            txtViewPeople.text = it.toString()
         }
 
         val txtViewRooms: TextView = binding.tvRoomsNo
         homeViewModel.roomsData.observe(viewLifecycleOwner) {
-            txtViewRooms.text = "No of total rooms\n${it.toString()}"
+            txtViewRooms.text = it.toString()
         }
 
         val txtRoomsOccupied: TextView = binding.tvRoomsNoOccupied
         homeViewModel.roomOccupied.observe(viewLifecycleOwner) {
-            txtRoomsOccupied.text = "No of occupied rooms\n${it.toString()}"
+            txtRoomsOccupied.text = it.toString()
         }
 
         val txtRoomsVacant: TextView = binding.tvRoomsNoVacant
         homeViewModel.roomVacant.observe(viewLifecycleOwner) {
-            txtRoomsVacant.text = "No of vacant rooms\n${it.toString()}"
+            txtRoomsVacant.text = it.toString()
         }
 
         homeViewModel.loadPeopleData()
