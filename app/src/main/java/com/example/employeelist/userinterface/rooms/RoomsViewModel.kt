@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.employeelist.data.model.rooms.RoomsModel
 import com.example.employeelist.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -12,17 +13,13 @@ import javax.inject.Inject
 @HiltViewModel
 class RoomsViewModel @Inject constructor(
     val repository: Repository
-): ViewModel() {
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Whatever you want!"
-    }
-    val text: LiveData<String> = _text
-
-
-    fun getRoomsData(){
+    val rooms = MutableLiveData<RoomsModel>()
+    fun getRoomsData() {
         viewModelScope.launch {
-            _text.postValue(repository.getRooms().toString())
+            val result = repository.getRooms()
+            rooms.postValue(result)
         }
     }
 }

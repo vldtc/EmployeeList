@@ -28,25 +28,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="10dp"
         android:weightSum="10">
+
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="7.5"
+            android:layout_weight="8"
             android:fontFamily="sans-serif-medium"
             android:gravity="start|center"
-            android:text="Number of people currently employed"
+            android:text="TOTAL EMPLOYEES"
             android:textSize="15sp" />
+
 
         <TextView
             android:id="@+id/tvPeopleNo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5"
+            android:layout_weight="2"
             android:background="@drawable/rounded_textview_gray"
-            android:elevation="10dp"
+            android:elevation="5dp"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/cirlceText"
@@ -55,17 +57,20 @@
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="VIEW EMPLOYEES" />
+        android:elevation="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="EMPLOYEES LIST" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-black"
-        android:gravity="end"
+        android:gravity="start"
         android:text="@string/title_rooms"
         android:textAllCaps="true"
         android:textSize="@dimen/headerText" />
@@ -80,28 +85,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="10dp"
         android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="start|center"
+            android:text="TOTAL ROOMS"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tvRoomsNo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
+            android:layout_weight="2"
             android:background="@drawable/rounded_textview_gray"
+            android:elevation="5dp"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="30sp"
             tools:text="H" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7.5"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="end|center"
-            android:text="rooms for our amazing team to use!"
-            android:textSize="15sp" />
+
     </LinearLayout>
 
 
@@ -109,24 +117,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="10dp"
         android:weightSum="10">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="7.5"
+            android:layout_weight="8"
             android:fontFamily="sans-serif-medium"
             android:gravity="start|center"
-            android:text="Number of currently occupied rooms "
+            android:text="OCCUPIED ROOMS"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tvRoomsNoOccupied"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:background="@drawable/rounded_textview_gray"
+            android:layout_weight="2"
+            android:background="@drawable/rounded_textview_red"
+            android:elevation="5dp"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="30sp"
@@ -138,48 +147,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="10dp"
         android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="start|center"
+            android:text="VACANT ROOMS"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tvRoomsNoVacant"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:background="@drawable/rounded_textview_gray"
+            android:layout_weight="2"
+            android:background="@drawable/rounded_textview_green"
+            android:elevation="5dp"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="30sp"
             tools:text="H" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7.5"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="end|center"
-            android:text="currently available rooms for your team!"
-            android:textSize="15sp" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
+        android:gravity="start"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
+            android:elevation="5dp"
             android:text="OCCUPIED" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:elevation="5dp"
             android:text="VACANT" />
 
 
@@ -189,6 +204,15 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@color/black" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="We are glad to have you back on the portal!"
+        android:textSize="15sp" />
 
 
 </LinearLayout>
