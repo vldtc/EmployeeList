@@ -3,6 +3,7 @@
     <color name="red_primary_light">#FF1A1A</color>
     <color name="red_primary">#C40202</color>
     <color name="red_primary_variant">#930000</color>
+    <color name="red_light_background">#F3F3F3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>

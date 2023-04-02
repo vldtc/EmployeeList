@@ -8,9 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.employeelist.R
 import com.example.employeelist.data.model.rooms.RoomsItemModel
 import com.example.employeelist.databinding.ItemRoomBinding
+import java.util.*
+import java.util.Collections.addAll
+import kotlin.collections.ArrayList
 
 class RoomsAdapter(val rooms: ArrayList<RoomsItemModel>) :
     RecyclerView.Adapter<RoomsAdapter.ViewHolder>() {
+
+    val initiaRoomDataList = ArrayList<RoomsItemModel>().apply {
+        rooms?.let { addAll(it) }
+    }
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemRoomBinding.bind(view)
@@ -54,6 +61,41 @@ class RoomsAdapter(val rooms: ArrayList<RoomsItemModel>) :
     }
 
     override fun getItemCount(): Int = rooms.size!!
+
+    fun getFilter(): android.widget.Filter {
+        return roomsFilter
+    }
+
+    private val roomsFilter = object : android.widget.Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredList: ArrayList<RoomsItemModel> = ArrayList()
+            if (constraint == null || constraint.isEmpty()) {
+                initiaRoomDataList.let { filteredList.addAll(it) }
+            } else {
+                val query = constraint.toString().trim().toLowerCase()
+                initiaRoomDataList.forEach {
+                    if (it.isOccupied == true and (query == "BUSY")) {
+                        filteredList.add(it)
+                    }else if(it.isOccupied == false and (query == "VACANT")) {
+                        filteredList.add(it)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            if (results?.values is ArrayList<*>) {
+                rooms.clear()
+                rooms.addAll(results.values as ArrayList<RoomsItemModel>)
+                notifyDataSetChanged()
+            }
+        }
+    }
+
+
 
 
 }
