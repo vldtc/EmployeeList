@@ -24,8 +24,16 @@ class RoomsAdapter(val rooms: ArrayList<RoomsItemModel>) :
         fun handleData(item: RoomsItemModel?) {
             item?.let {
                 with(it){
+                    //Used to reformat the date string
+                    var year: String = item?.createdAt.toString().take(4)
+                    var month: String = item?.createdAt?.subSequence(5, 7).toString()
+                    var day: String = item?.createdAt?.subSequence(8,10).toString()
+                    var hour: String = item?.createdAt?.subSequence(11,13).toString()
+                    var min: String = item?.createdAt?.subSequence(14,16).toString()
+
+                    val formatedDate = "$day/$month/$year\n$hour:$min"
                     binding.tvRoomID.text = id
-                    binding.tvRoomCreated.text = createdAt
+                    binding.tvRoomCreated.text = formatedDate
                     binding.tvRoomMaxOccup.text = maxOccupancy.toString()
                     binding.tvRoomIsOccup.text = if (isOccupied == true) "BUSY"
                     else "VACANT"
@@ -48,6 +56,8 @@ class RoomsAdapter(val rooms: ArrayList<RoomsItemModel>) :
                 }
             }
         }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomsAdapter.ViewHolder {
@@ -94,6 +104,8 @@ class RoomsAdapter(val rooms: ArrayList<RoomsItemModel>) :
             }
         }
     }
+
+
 
 
 

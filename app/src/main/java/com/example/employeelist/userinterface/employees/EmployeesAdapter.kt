@@ -11,6 +11,7 @@ import coil.load
 import com.example.employeelist.R
 import com.example.employeelist.data.model.people.PeopleItemModel
 import com.example.employeelist.databinding.ItemEmployeeBinding
+import java.lang.Character.toLowerCase
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -28,11 +29,20 @@ class EmployeesAdapter(val employees: ArrayList<PeopleItemModel>) :
         fun handleData(item: PeopleItemModel?) {
             item?.let {
                 with(it) {
+                    //Used to reformat the date string
+                    var year: String = item?.createdAt.toString().take(4)
+                    var month: String = item?.createdAt?.subSequence(5, 7).toString()
+                    var day: String = item?.createdAt?.subSequence(8, 10).toString()
+                    var hour: String = item?.createdAt?.subSequence(11, 13).toString()
+                    var min: String = item?.createdAt?.subSequence(14, 16).toString()
+
+                    val formatedDate = "$day/$month/$year $hour:$min"
+
                     binding.tvEmplolyeeJob.text = jobtitle
                     binding.tvEmployeeName.text =
                         "${firstName.toString().uppercase()} ${lastName.toString().uppercase()}"
                     binding.tvID.text = "ID $id"
-                    binding.tvEmployeeCreatedAt.text = createdAt
+                    binding.tvEmployeeCreatedAt.text = formatedDate
                     binding.tvEmployeeEmail.text = email
                     binding.tvEmployeeFavouriteColour.text = favouriteColor.toString().uppercase()
                     binding.sivEmployee.load(
@@ -93,6 +103,42 @@ class EmployeesAdapter(val employees: ArrayList<PeopleItemModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.handleData(employees?.get(position))
+    }
+
+    fun getFilter(): Filter {
+        return employeesFilter
+    }
+
+    private val employeesFilter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredList: ArrayList<PeopleItemModel> = ArrayList()
+            if (constraint == null || constraint.isEmpty()) {
+                initialEmployeesDataList.let { filteredList.addAll(it) }
+            } else {
+                val query = constraint.toString().trim().lowercase(Locale.ROOT)
+                initialEmployeesDataList.forEach {
+                    var fullName = "${it.firstName} ${it.lastName}"
+                    if (fullName.lowercase(Locale.ROOT).contains(query)) {
+                        filteredList.add(it)
+                    }else if(it.jobtitle?.lowercase()!!.contains(query)){
+                        filteredList.add(it)
+                    }else if(it.id==query){
+                        filteredList.add(it)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            if (results?.values is ArrayList<*>) {
+                employees.clear()
+                employees.addAll(results.values as ArrayList<PeopleItemModel>)
+                notifyDataSetChanged()
+            }
+        }
     }
 
 }
