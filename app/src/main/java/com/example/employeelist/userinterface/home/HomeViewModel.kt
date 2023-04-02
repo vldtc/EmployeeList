@@ -30,6 +30,7 @@ class HomeViewModel @Inject constructor(
     }
     val roomVacant: LiveData<Int> = _roomsVacant
 
+
     fun loadPeopleData() {
         viewModelScope.launch {
             val peopleNo = repository.getPeople().size - 1
@@ -57,5 +58,6 @@ class HomeViewModel @Inject constructor(
             _roomsVacant.postValue(vacant)
         }
     }
+
 }
 

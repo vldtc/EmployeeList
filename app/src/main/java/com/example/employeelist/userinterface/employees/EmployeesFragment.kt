@@ -27,10 +27,10 @@ class EmployeesFragment : Fragment() {
         _binding = FragmentEmployeesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+        /*val textView: TextView = binding.textDashboard
         employeesViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
 
         employeesViewModel.loadPeopleData()
 

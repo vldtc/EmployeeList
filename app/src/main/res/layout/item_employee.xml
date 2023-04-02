@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="4dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcvEmployees"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/sivEmployee"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRound"
+                tools:src="@tools:sample/backgrounds/scenic"/>
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/productImageViewLoadingProgressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:indeterminateOnly="true"
+                app:layout_constraintBottom_toBottomOf="@id/sivEmployee"
+                app:layout_constraintEnd_toEndOf="@id/sivEmployee"
+                app:layout_constraintStart_toStartOf="@id/sivEmployee"
+                app:layout_constraintTop_toTopOf="@id/sivEmployee" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEmployeeName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="end"
+                android:textColor="@color/red_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/sivEmployee"
+                app:layout_constraintTop_toTopOf="@id/sivEmployee"
+                tools:text="Jack Jones" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/productCategoryTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="end"
+                android:textColor="@color/red_primary_light"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="@id/tvEmployeeName"
+                app:layout_constraintStart_toStartOf="@id/tvEmployeeName"
+                app:layout_constraintTop_toBottomOf="@id/tvEmployeeName"
+                tools:text="Android Developer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/red_primary"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@id/tvCreatedAt"
+                app:layout_constraintStart_toStartOf="@id/tvEmployeeName"
+                app:layout_constraintTop_toTopOf="@id/tvCreatedAt"
+                tools:text="ID 1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCreatedAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:layout_margin="8dp"
+                android:maxLines="1"
+                android:textColor="@color/red_primary_light"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="20-03-2023" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="8dp"
+            tools:text="More info"
+            android:visibility="gone"
+            android:textColor="@color/red_primary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/mcvEmployees"
+            app:layout_constraintStart_toStartOf="@id/mcvEmployees"
+            app:layout_constraintTop_toBottomOf="@id/mcvEmployees"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

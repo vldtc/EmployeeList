@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".userinterface.rooms.RoomsFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,19 +17,19 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="SHOW"
-            android:gravity="start|center"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
             android:fontFamily="sans-serif-medium"
-            android:textColor="@color/white"
-            android:layout_weight="1"/>
+            android:gravity="start|center"
+            android:text="SHOW"
+            android:textColor="@color/white" />
 
         <RadioGroup
             android:id="@+id/rgOccupancyFilter"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="3"
-            android:elevation="10dp"
+            android:elevation="5dp"
             android:gravity="end"
             android:orientation="horizontal"
             android:padding="5dp"
@@ -58,10 +57,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
                 android:background="@drawable/radio_selector"
                 android:button="@color/transparent"
                 android:elevation="10dp"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="BUSY"
@@ -72,10 +71,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
                 android:background="@drawable/radio_selector"
                 android:button="@color/transparent"
                 android:elevation="4dp"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="VACANT"
@@ -84,6 +83,41 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="Room" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Created at" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="Capacity" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="Occupancy" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRooms"

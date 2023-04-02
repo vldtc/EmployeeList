@@ -3,6 +3,7 @@ package com.example.employeelist.userinterface.rooms
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.employeelist.R
 import com.example.employeelist.data.model.rooms.RoomsItemModel
@@ -11,11 +12,34 @@ import com.example.employeelist.databinding.ItemRoomBinding
 class RoomsAdapter(val rooms: ArrayList<RoomsItemModel>) :
     RecyclerView.Adapter<RoomsAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemRoomBinding.bind(view)
         fun handleData(item: RoomsItemModel?) {
-
-            binding.tvRoomID.text = item?.id
+            item?.let {
+                with(it){
+                    binding.tvRoomID.text = id
+                    binding.tvRoomCreated.text = createdAt
+                    binding.tvRoomMaxOccup.text = maxOccupancy.toString()
+                    binding.tvRoomIsOccup.text = if (isOccupied == true) "BUSY"
+                    else "VACANT"
+                }
+                // If statement to select the text colour of the occupancy accordingly
+                if(item.isOccupied == true){
+                    binding.tvRoomIsOccup.setTextColor(
+                        ContextCompat.getColor(
+                            view.context,
+                            R.color.red_primary
+                        )
+                    )
+                }else{
+                    binding.tvRoomIsOccup.setTextColor(
+                        ContextCompat.getColor(
+                            view.context,
+                            R.color.green
+                        )
+                    )
+                }
+            }
         }
     }
 
